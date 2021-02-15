@@ -68,7 +68,7 @@ public class EcommerceService {
     public List<ProductGroup> getGroups(){
         return groupRepository.findAll();
     }
-    public ProductGroup getGroup(long id){
+    public ProductGroup getGroup(Long id){
         return groupRepository.findOne(id);
     }
     public ProductGroup saveGroup(ProductGroup group){
@@ -79,7 +79,7 @@ public class EcommerceService {
     public List<Order> getOrders(){
         return orderRepository.findAll();
     }
-    public Order getOrder(long id){
+    public Order getOrder(Long id){
         return orderRepository.findOne(id);
     }
     public Order saveOrder(Order order){
