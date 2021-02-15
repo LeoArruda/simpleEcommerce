@@ -1,10 +1,11 @@
 package com.brainelixir.ecomm.models;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "orders")
@@ -23,52 +24,96 @@ public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Integer getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(long id) {
         this.id = id;
     }
 
-    public String getPrice() {
-        return price;
+    public String getName() {
+        return name;
     }
 
-    public void setPrice(String price) {
-        this.price = price;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "order_id")
-    @JsonBackReference
-    public Order getOrder() {
-        return order;
+    public String getAddress() {
+        return address;
     }
 
-    public void setOrder(Order order) {
-        this.order = order;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "product_id")
-//    @JsonBackReference(value = "product_reference")
-    public Product getProduct() {
-        return product;
+    public String getCity() {
+        return city;
     }
 
-    public void setProduct(Product product) {
-        this.product = product;
+    public void setCity(String city) {
+        this.city = city;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "product_variant_id")
-    public GroupVariant getGroupVariant() {
-        return groupVariant;
+    public String getZip() {
+        return zip;
     }
 
-    public void setGroupVariant(GroupVariant groupVariant) {
-        this.groupVariant = groupVariant;
+    public void setZip(String zip) {
+        this.zip = zip;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    @Column(name = "total_price")
+    public Number getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(Number totalPrice) {
+        this.totalPrice = totalPrice;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public LocalDate getCreated() {
+        return created;
+    }
+
+    public void setCreated(LocalDate created) {
+        this.created = created;
+    }
+
+    @OneToMany(mappedBy = "order", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JsonManagedReference
+//    @JsonIgnore
+    public List<OrderItem> getItems() {
+        return items;
+    }
+
+    public void setItems(List<OrderItem> items) {
+        this.items = items;
     }
 
 }
