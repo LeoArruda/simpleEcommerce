@@ -2,10 +2,10 @@ package com.brainelixir.ecomm.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import org.springframework.data.jpa.repository.Temporal;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "product_groups")
