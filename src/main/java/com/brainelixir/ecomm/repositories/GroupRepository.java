@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository("groupRepository")
 public interface GroupRepository extends JpaRepository<ProductGroup, Long> {
-    
+
 }
